@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<h2>Validation Form</h2>
+
+<body>
+    <div class="aballo">
+        <form>
+            <!-- firstName -->
+            <label for="fname">First Name</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <!-- lastName -->
+            <label for="lname">Last Name</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <!-- email -->
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email"><br>
+            <!-- password -->
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <!-- submit -->
+            <input type="Submit" class="button" value="Submit">
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let firstNameError = document.getElementById("firstNameError");
+            let lastnameError = document.getElementById("lastNameError");
+            let emailError = document.getElementById("emailError");
+            let passwordError = document.getElementById("passwordError");
+            let valid = true;
+
+            // Validate firstName
+            if (!firstName || firstName === "") {
+                firstNameError.textContent = "firstName is required";
+                valid = false;
+            } else if (!isValidfirstName(firstName)) {
+                firstNameError.textContent = "Invalid name";
+                valid = false;
+            } else {
+                firstNameError.textContent = "";
+            }
+
+            // Validate lastName
+            if (!lastName || lastName === "") {
+                lastNameError.textContent = "lastName is required";
+                valid = false;
+            } else if (!isValidlastName(lastName)) {
+                lastNameError.textContent = "Invalid name";
+                valid = false;
+            } else {
+                lastNameError.textContent = "";
+            }
+            // Validate email
+            if (!email || email === "") {
+                emailError.textContent = "Email is required";
+                valid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = "Invalid email address";
+                valid = false;
+            } else {
+                emailError.textContent = "";
+            }
+
+            // Validate password
+            if (!password || password === "") {
+                passwordError.textContent = "Password is required";
+                valid = false;
+            } else if (password.length < 8) {
+                passwordError.textContent = "Password must be at least 8 characters";
+                valid = false;
+            } else {
+                passwordError.textContent = "";
+            }
+
+            return valid;
+        }
+
+        function isValidEmail(email) {
+            // Simple email validation using regular expression
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+
+</html>
