@@ -38,9 +38,9 @@
             <input type="button" class="clear" value="C" onclick="clearDisplay()">
         </div>
     </div>
-    <footer>
+    <!-- <footer>
         <p class="text-center">&copy; 2024 aballojanet. All rights reserved.</p>
-    </footer>
+    </footer> -->
 
     <script>
         function addToDisplay(value) {
@@ -48,8 +48,8 @@
         }
 
         function calculate() {
-            var expression = document.getElementById('display').value;
-            var result = eval(expression);
+            let expression = document.getElementById('display').value;
+            let result = eval(expression);
             document.getElementById('display').value = result;
         }
 
